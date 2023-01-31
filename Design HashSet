@@ -1,0 +1,40 @@
+// Simple array  use kiya.
+// Array ke index ke saath khela
+// adding= arr[index] =1
+//removing = arr[index] =0
+// is present = return  arr[index]
+
+
+
+class MyHashSet {
+public:
+    vector<int>v;
+    MyHashSet() {
+        int n =1e6+1;
+        v.resize(n);
+        
+    }
+    
+    void add(int key) {
+        v[key]=1;
+        
+    }
+    
+    void remove(int key) {
+        v[key]=0;
+        
+    }
+    
+    bool contains(int key) {
+        return v[key];
+        
+    }
+};
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet* obj = new MyHashSet();
+ * obj->add(key);
+ * obj->remove(key);
+ * bool param_3 = obj->contains(key);
+ */
