@@ -3,7 +3,7 @@
 // adding= arr[index] =1
 //removing = arr[index] =0
 // is present = return  arr[index]
-
+// Problem - we cannot store negative number in our array based hashset.
 
 
 class MyHashSet {
@@ -38,3 +38,47 @@ public:
  * obj->remove(key);
  * bool param_3 = obj->contains(key);
  */
+ 
+ 
+ 
+ //Using Inbuilt LinkedList in cpp.
+ // Made two functions by ourselves named search and hash.
+ // Not that difficult.
+ 
+ class MyHashSet {
+public:
+    list<int> l[10001];
+    MyHashSet() {
+        
+    }
+    int hash(int key){
+        return key%10001;
+    }
+    list<int> :: iterator search(int key){
+        int i = hash(key);
+        return find(l[i].begin(),l[i].end(),key);
+    }
+
+    
+    void add(int key) {
+        if(contains(key)==true) return;
+        int i = hash(key);
+        l[i].push_back(key);
+        
+    }
+    
+    void remove(int key) {
+        if(contains(key)==false) return;
+        list<int> :: iterator it = search(key);
+        int i = hash(key);
+        l[i].erase(it);
+    }
+    
+    bool contains(int key) {
+        list<int> :: iterator it = search(key);
+        int i = hash(key);
+        if(it==l[i].end()) return false;
+        return true;
+    }
+};
+
