@@ -1,0 +1,47 @@
+// First time learnt ki list of pair kaise banta hai.
+// Saara Kaam O(1) me ho raha hai.
+// isme me bhi {key,value} pair directly push_back kar sakte hain.
+
+
+class MyHashMap {
+public:
+    list<pair<int,int>> p[10001];
+    MyHashMap() {
+        
+    }
+    int hash(int key){
+        return key%10001;
+    }
+    list<pair<int,int>> :: iterator search(int key){
+        int i = hash(key);
+        list<pair<int,int>>:: iterator it= p[i].begin();
+        while(it!=p[i].end()){
+            if(it->first == key) return it;
+            it++;
+        }
+        return it;
+    }
+    
+    void put(int key, int value) {
+        remove(key);
+        int i = hash(key);
+        p[i].push_back({key,value});
+    }
+    
+    int get(int key) {
+        list<pair<int,int>>:: iterator it = search(key);
+        int i = hash(key);
+        if(it==p[i].end()) return -1;
+        return it->second;
+    }
+    
+    void remove(int key) {
+        int i = hash(key);
+        list<pair<int,int>> :: iterator it = search(key);
+        if(it==p[i].end()) return;
+        p[i].erase(it);
+
+        
+    }
+};
+
